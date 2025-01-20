@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/login', [RegistrationController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [RegistrationController::class, 'login']);
-Route::post('/logout', [RegistrationController::class, 'logout'])->name('logout');
+Route::post('/logout', [RegistrationController::class, 'logout'])->middleware('auth:sanctum')->name('logout');
 
 
 Route::get('/register', [RegistrationController::class, 'showRegistrationForm'])->name('registerform');
