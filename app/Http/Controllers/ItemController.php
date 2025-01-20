@@ -45,7 +45,7 @@ class ItemController extends Controller
         if ($item) {
             return response()->json($item, 201);
         } else {
-            return response()->json('Not able to add data', 201);
+            return response()->json('Not able to add data', 404);
         }
     }
 
@@ -93,7 +93,7 @@ class ItemController extends Controller
         $item = Item::find($id);
         if ($item) {
             $item->update($request->all());
-            return response()->json($item);
+            return response()->json($item,201);
         } else {
             return response()->json(['message' => 'No data found'], 404);
         }
@@ -111,7 +111,7 @@ class ItemController extends Controller
         $item = Item::find($id);
         if ($item) {
             $item->delete();
-            return response()->json(['message' => 'Item deleted']);
+            return response()->json(['message' => 'Item deleted'],201);
         } else {
             return response()->json(['message' => 'No data found'], 404);
         }
